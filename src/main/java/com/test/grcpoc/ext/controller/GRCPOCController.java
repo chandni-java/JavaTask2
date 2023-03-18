@@ -63,7 +63,7 @@ public class GRCPOCController {
 //		
 //		response0.getBody().getField();
 		
-		return response;
+		//return response;
 	}
 	
 	@PostMapping("/postrecords")

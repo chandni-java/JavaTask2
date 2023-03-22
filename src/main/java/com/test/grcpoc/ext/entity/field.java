@@ -1,32 +1,33 @@
 package com.test.grcpoc.ext.entity;
 
 import lombok.Data;
-
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Data
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class field 
 		{
-		   private String Title;
-		   private String Email;
-		   private String DisplayName;
+		   private String name;
+		   private String value;
+		   private String dataType;
 		   
-		public String getTitle() {
-			return Title;
+		public String getName() {
+			return name;
 		}
-		public void setTitle(String title) {
-			Title = title;
+		public void setName(String name) {
+			this.name = name;
 		}
-		public String getEmail() {
-			return Email;
+		public String getValue() {
+			return value;
 		}
-		public void setEmail(String email) {
-			Email = email;
+		public void setValue(String value) {
+			this.value = value;
 		}
-		public String getDisplayName() {
-			return DisplayName;
+		public String getDataType() {
+			return dataType;
 		}
-		public void setDisplayName(String displayName) {
-			DisplayName = displayName;
+		public void setDataType(String dataType) {
+			this.dataType = dataType;
 		}
 		   
-		   
+		
 }

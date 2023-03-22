@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class ServiceNowResource 
 {
-		private ArrayList <result> result;
-		 
+		public ArrayList <result> result;
+
 		public ArrayList<result> getResult() 
 		{
 			return result;
@@ -20,5 +20,7 @@ public class ServiceNowResource
 		{
 			this.result = result;
 		}
+		 
+		
 		
 }

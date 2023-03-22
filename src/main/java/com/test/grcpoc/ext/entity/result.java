@@ -7,16 +7,11 @@ import lombok.Data;
 @Data
 public class result {
 	
+	private String install_status;
 	
-	@SuppressWarnings("unused")
-	public String install_status;
+	private String sys_class_name;
 	
-	@SuppressWarnings("unused")
-	public String sys_class_name;
-	
-	@SuppressWarnings("unused")
-	public String display_name;
-
+	private String display_name;
 
 	public String getInstall_status() {
 		return install_status;
@@ -41,12 +36,6 @@ public class result {
 	public void setDisplay_name(String display_name) {
 		this.display_name = display_name;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

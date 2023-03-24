@@ -3,6 +3,7 @@ package com.test.grcpoc.ext.service;
 import java.util.ArrayList;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.grcpoc.ext.entity.PostEntity;
@@ -10,10 +11,11 @@ import com.test.grcpoc.ext.entity.ServiceNowResource;
 import com.test.grcpoc.ext.entity.field;
 import com.test.grcpoc.ext.entity.fields;
 
+@Service
 public class ServiceNowRecords implements IServiceNowRecords {
 
 	@Override
-	public void extractData(ResponseEntity<ServiceNowResource> response) {
+	public PostEntity extractData(ResponseEntity<ServiceNowResource> response) {
 		ObjectMapper mapper = new ObjectMapper();  
 		
 		ArrayList<field> fieldAl = new ArrayList<>();
@@ -45,10 +47,12 @@ public class ServiceNowRecords implements IServiceNowRecords {
 		PostEntity postE = new PostEntity();
 		
 		postE.setDescription(response.getBody().getResult().get(0).getInstall_status());
-		postE.setName("Employee10");
+		postE.setName("Employee12");
 		postE.setPrimaryParentId("12122");
 		postE.setTypeDefinitionId("Employee");
 		postE.setFields(fields);
+		
+		return postE;
 	}
 
 }

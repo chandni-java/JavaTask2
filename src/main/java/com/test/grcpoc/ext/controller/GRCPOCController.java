@@ -46,7 +46,10 @@ public class GRCPOCController {
         
 		ResponseEntity<ServiceNowResource> response = restTemplate.exchange(uri, HttpMethod.GET, request, ServiceNowResource.class);
         
-		iServiceNowRecords.extractData(response);
+//      Calling a method and passing ResponseEntity as an argument in that method.
+//      In return it is giving PostEntity object.		
+		PostEntity postE = iServiceNowRecords.extractData(response);
+		
 		
 		HttpHeaders headers0 = new HttpHeaders();
 		
@@ -72,30 +75,4 @@ public class GRCPOCController {
 		return response;
 	}   
 	   
-//	@RequestMapping(value = "/postrecords")
-//	public void postRecords(@ModelAttribute fields postEntity) throws URISyntaxException
-//	{   
-//			HttpHeaders headers0 = new HttpHeaders();
-//			
-//			headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2022");
-//			
-//			URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
-//			
-//			HttpEntity<String> request0 = new HttpEntity<String>(headers0);
-//			
-//			fields f = new fields();
-//			field ff0 = new field();
-//			f.setTypeDefinitionId("Employee");
-//			f.setName("employee 9");
-//			f.setPrimaryParentId("12122");
-//			f.setDescription("this is hard coded");
-////			f.setDescription(fields.getDescription());
-////			f.setName(fields.getName());
-////			f.setTypeDefinitionId(fields.getTypeDefinitionId());
-////			f.setPrimaryParentId(fields.getPrimaryParentId());
-//			
-//			ResponseEntity<fields> response0 = restTemplate.exchange(uri0, HttpMethod.POST, request0, fields.class);
-//			
-//			//System.out.println("this is description : " +response0.getBody().getField().get(0));
-//	}
 }

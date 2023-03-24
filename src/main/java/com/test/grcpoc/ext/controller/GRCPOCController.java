@@ -41,7 +41,7 @@ public class GRCPOCController {
 		headers.setBasicAuth("joel.nardo", "Jithu@1254");
 		
 		URI uri = new URI("https://dev141866.service-now.com/api/now/table/alm_asset?sysparm_limit=1");
-        
+        //.
 		HttpEntity<String> request = new HttpEntity<String>(headers);
         
 		ResponseEntity<ServiceNowResource> response = restTemplate.exchange(uri, HttpMethod.GET, request, ServiceNowResource.class);

@@ -58,12 +58,6 @@ public class GRCPOCController {
 		
 		URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
 		
-		//HttpEntity<String> request0 = new HttpEntity<String>(headers0);
-		
-		 //String objectString= mapper.writeValueAsString(postE);
-         
-	    // JsonNode jsonBody = mapper.readTree(objectString);
-	     
 	    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
 		
 		//ResponseEntity<PostEntity> response0 = restTemplate.exchange(uri0, HttpMethod.POST, entity, PostEntity.class);

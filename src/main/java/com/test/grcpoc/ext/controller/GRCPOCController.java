@@ -60,8 +60,6 @@ public class GRCPOCController {
 		
 	    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
 		
-		//ResponseEntity<PostEntity> response0 = restTemplate.exchange(uri0, HttpMethod.POST, entity, PostEntity.class);
-		
 		ResponseEntity<String> response0 = restTemplate.postForEntity(uri0, entity, String.class);
 		
 		return response;

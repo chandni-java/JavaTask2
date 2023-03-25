@@ -70,8 +70,6 @@ public class GRCPOCController {
 		
 		ResponseEntity<String> response0 = restTemplate.postForEntity(uri0, entity, String.class);
 		
-		System.out.println(postE.toString());
-		
 		return response;
 	}   
 	   

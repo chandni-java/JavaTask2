@@ -46,7 +46,6 @@ public class ServiceNowRecords implements IServiceNowRecords {
 		
 		PostEntity postE = new PostEntity();
 		
-		postE.setDescription(response.getBody().getResult().get(0).getInstall_status());
 		postE.setName("Emp 25th mar");
 		postE.setPrimaryParentId("12122");
 		postE.setTypeDefinitionId("Employee");

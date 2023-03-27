@@ -2,7 +2,6 @@ package com.test.grcpoc.ext.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -15,12 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.grcpoc.ext.entity.PostEntity;
 import com.test.grcpoc.ext.entity.ServiceNowResource;
-import com.test.grcpoc.ext.entity.field;
-import com.test.grcpoc.ext.entity.fields;
 import com.test.grcpoc.ext.service.IServiceNowRecords;
 
 @RestController

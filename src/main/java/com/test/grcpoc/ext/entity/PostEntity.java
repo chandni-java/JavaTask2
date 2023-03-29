@@ -8,7 +8,6 @@ public class PostEntity {
 	 private String typeDefinitionId;
 	 private String primaryParentId;
 	 private String name;
-	 private String description;
 	 private fields fields;
 	 
 public String getTypeDefinitionId() {
@@ -23,19 +22,11 @@ public String getPrimaryParentId() {
 public void setPrimaryParentId(String primaryParentId) {
 	this.primaryParentId = primaryParentId;
 }
-public String getName() {
-	return name;
-}
-public void setName(String name) {
-	this.name = name;
-}
-public String getDescription() {
-	return description;
-}
 
-public void setDescription(String description) {
-	this.description = description;
-}
+
+  public String getName() { return name; } public void setName(String name) {
+  this.name = name; }
+ 
 public fields getFields() {
 	return fields;
 }

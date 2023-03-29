@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.grcpoc.ext.entity.PostEntity;
-import com.test.grcpoc.ext.entity.ServiceNowArrayRecords;
 import com.test.grcpoc.ext.entity.ServiceNowResource;
 import com.test.grcpoc.ext.entity.field;
 import com.test.grcpoc.ext.entity.fields;
@@ -16,44 +14,76 @@ import com.test.grcpoc.ext.entity.fields;
 public class ServiceNowRecords implements IServiceNowRecords {
 
 	@Override
-	public ServiceNowArrayRecords extractData(ResponseEntity<ServiceNowResource> response) {
-		int a = response.getBody().getResult().size();
-		ArrayList<PostEntity> pEntity = new ArrayList<>();
-		ServiceNowArrayRecords snar = new ServiceNowArrayRecords();
-		for(int i = 0; i < a; i++)
-	   {
-			field f = new field();
-			f.setName("OPSS-Emp:First Name");
-			f.setValue(response.getBody().getResult().get(i).getDisplay_name());
-			f.setDataType("STRING_TYPE");
+	public PostEntity extractData(ResponseEntity<ServiceNowResource> response, int i) {
 			
-			field f0 = new field();
-			f0.setName("OPSS-Emp:Last Name");
-			f0.setValue(response.getBody().getResult().get(i).getSys_class_name());
-			f0.setDataType("STRING_TYPE");
-			
+//		field f = new field();
+//			f.setName("ServiceNow Field Group:Snow Description");
+//			f.setValue(response.getBody().getResult().get(i).getInvoice_number());
+//			f.setDataType("STRING_TYPE");
+//			
+//			field f0 = new field();
+//			f0.setName("System Fields:Name");
+//			f0.setValue(response.getBody().getResult().get(i).getDisplay_name());
+//			f0.setDataType("STRING_TYPE");
+//			
 //			field f1 = new field();
-//			f1.setValue(response.getBody().getResult().get(i).getInstall_status());
+//			f1.setName("ServiceNow Field Group:Snow Additional Description");
+//			f1.setValue(response.getBody().getResult().get(i).getDelivery_date());
 //			f1.setDataType("STRING_TYPE");
-//			f1.setName("OPSS-Emp:Email");
+//			
+//			field f2 = new field();
+//			f2.setName("OPSS-Res:Technical Support 1");
+//			f2.setValue(response.getBody().getResult().get(i).getRetirement_date());
+//			f2.setDataType("STRING_TYPE");
+//			
+//			field f3 = new field();
+//			f3.setName("OPSS-Res:Technical Support 2");
+//			f3.setValue(response.getBody().getResult().get(i).getDepreciation_date());
+//			f3.setDataType("STRING_TYPE");
+//			
+//			field f4 = new field();
+//			f4.setName("BCM-Res:Recovery Point");
+//			f4.setValue(response.getBody().getResult().get(i).getCost());
+//			f4.setDataType("STRING_TYPE");
+//			
+//			field f5 = new field();
+//			f5.setName("BCM-Res:Recovery Time");
+//			f5.setValue(response.getBody().getResult().get(i).getQuantity());
+//			f5.setDataType("STRING_TYPE");
+//			
+//			field f6 = new field();
+//			f6.setName("IntegrationWKC:Project ID");
+//			f6.setValue(response.getBody().getResult().get(i).getSerial_number());
+//			f6.setDataType("STRING_TYPE");
+//			
+//			field f7 = new field();
+//			f7.setName("ServiceNow Field Group:sys mod count");
+//			f7.setValue(response.getBody().getResult().get(i).getSys_mod_count());
+//			f7.setDataType("STRING_TYPE");
+			
+			
+			
 			
 			ArrayList<field> fieldAl = new ArrayList<>();
-			fieldAl.add(f);
-			fieldAl.add(f0);
+//			fieldAl.add(f);
+//			//fieldAl.add(f0);
 //			fieldAl.add(f1);
+//			fieldAl.add(f2);
+//			fieldAl.add(f3);
+//			fieldAl.add(f4);
+//			fieldAl.add(f5);
+//			fieldAl.add(f6);
+//			fieldAl.add(f7);
 			
 			fields fields = new fields();
 			fields.setField(fieldAl);
 			
 			PostEntity postE = new PostEntity();
-			postE.setName(response.getBody().getResult().get(i).getInstall_status());
-			postE.setPrimaryParentId("12122");
-			postE.setTypeDefinitionId("Employee");
+			postE.setName(response.getBody().getResult().get(i).getDisplay_name());
+			postE.setPrimaryParentId("34227");
+			postE.setTypeDefinitionId("Resource");
 			postE.setFields(fields);
 			
-			pEntity.add(postE);
-			snar.setResults(pEntity);
-		}
-		return snar;
+		return postE;
 	}
 }

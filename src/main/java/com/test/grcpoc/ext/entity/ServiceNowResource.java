@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import lombok.Data;
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Data
 public class ServiceNowResource 
 {
-		public ArrayList <result> result;
+		private ArrayList <result> result;
 
 		public ArrayList<result> getResult() 
 		{

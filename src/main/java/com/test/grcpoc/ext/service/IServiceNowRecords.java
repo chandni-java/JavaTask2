@@ -8,6 +8,6 @@ import com.test.grcpoc.ext.entity.ServiceNowResource;
 public interface IServiceNowRecords 
 {
 
-	PostEntity extractData(ResponseEntity<ServiceNowResource> response, int i);
+	PostEntity extractData(ResponseEntity<ServiceNowResource> response, int i, int ii);
 	
 }

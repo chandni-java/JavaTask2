@@ -16,11 +16,14 @@ public class ServiceNowRecords implements IServiceNowRecords {
 	@Override
 	public PostEntity extractData(ResponseEntity<ServiceNowResource> response, int i, int ii) {
 			
+		    ServiceNowRecords snr = new ServiceNowRecords();
+		    snr.mapper();
+		
 			field f = new field();
 			f.setName("ServiceNow Field Group:Snow Description");
 			f.setValue(response.getBody().getResult().get(i).getInvoice_number());
 			f.setDataType("STRING_TYPE");
-//			
+			
 //			field f0 = new field();
 //			f0.setName("System Fields:Name");
 //			f0.setValue(response.getBody().getResult().get(i).getDisplay_name());
@@ -61,7 +64,6 @@ public class ServiceNowRecords implements IServiceNowRecords {
 			f7.setValue(response.getBody().getResult().get(i).getSys_mod_count());
 			f7.setDataType("STRING_TYPE");
 			
-			
 			ArrayList<field> fieldAl = new ArrayList<>();
 			fieldAl.add(f);
 //			fieldAl.add(f0);
@@ -83,5 +85,10 @@ public class ServiceNowRecords implements IServiceNowRecords {
 			postE.setFields(fields);
 			
 		return postE;
+	}
+	
+	public void mapper()
+	{
+		
 	}
 }

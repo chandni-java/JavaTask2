@@ -46,19 +46,19 @@ public class GRCPOCController {
         int ii = 0;
         for(int i = 0; i<response.getBody().getResult().size(); i++)
         {
-        ii++;
-		PostEntity postE = iServiceNowRecords.extractData(response, i, ii);
-		
-		HttpHeaders headers0 = new HttpHeaders();
-		
-		headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2022");
-		headers0.setContentType(MediaType.APPLICATION_JSON);
-		
-		URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
-		
-	    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
-		
-		restTemplate.postForEntity(uri0, entity, String.class);
+	        ii++;
+			PostEntity postE = iServiceNowRecords.extractData(response, i, ii);
+			
+			HttpHeaders headers0 = new HttpHeaders();
+			
+			headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2022");
+			headers0.setContentType(MediaType.APPLICATION_JSON);
+			
+			URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
+			
+		    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
+			
+			restTemplate.postForEntity(uri0, entity, String.class);
 		
         }
 		

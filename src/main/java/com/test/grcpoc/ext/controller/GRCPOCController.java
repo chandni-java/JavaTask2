@@ -35,7 +35,7 @@ public class GRCPOCController {
 		
 		headers.setBasicAuth("joel.nardo", "Jithu@1254");
 		
-		URI uri = new URI("https://dev141866.service-now.com/api/now/table/alm_asset?sysparm_limit=1");
+		URI uri = new URI("https://dev141866.service-now.com/api/now/table/alm_asset?sysparm_limit=10");
         
 		HttpEntity<String> request = new HttpEntity<String>(headers);
         
@@ -43,21 +43,22 @@ public class GRCPOCController {
         response.getBody().getResult().size();
 //      Calling a method and passing ResponseEntity as an argument in that method.
 //      In return it is giving PostEntity object.		
-        
+        int ii = 0;
         for(int i = 0; i<response.getBody().getResult().size(); i++)
         {
-		PostEntity postE = iServiceNowRecords.extractData(response, i);
-		
-		HttpHeaders headers0 = new HttpHeaders();
-		
-		headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2022");
-		headers0.setContentType(MediaType.APPLICATION_JSON);
-		
-		URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
-		
-	    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
-		
-		restTemplate.postForEntity(uri0, entity, String.class);
+	        ii++;
+			PostEntity postE = iServiceNowRecords.extractData(response, i, ii);
+			
+			HttpHeaders headers0 = new HttpHeaders();
+			
+			headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2022");
+			headers0.setContentType(MediaType.APPLICATION_JSON);
+			
+			URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
+			
+		    HttpEntity<PostEntity> entity = new HttpEntity<>(postE, headers0);
+			
+			restTemplate.postForEntity(uri0, entity, String.class);
 		
         }
 		

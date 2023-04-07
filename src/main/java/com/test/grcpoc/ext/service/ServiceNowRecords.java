@@ -44,10 +44,10 @@ public class ServiceNowRecords implements IServiceNowRecords {
 			f3.setValue(response.getBody().getResult().get(i).getDepreciation_date());
 			f3.setDataType("STRING_TYPE");
 			
-//			field f4 = new field();
-//			f4.setName("BCM-Res:Recovery Point");
-//			f4.setValue(response.getBody().getResult().get(i).getCost());
-//			f4.setDataType("STRING_TYPE");
+			field f4 = new field();
+			f4.setName("BCM-Res:Recovery Point");
+			//f4.setValue(response.getBody().getResult().get(i).getCost());
+			f4.setDataType("STRING_TYPE");
 //			
 //			field f5 = new field();
 //			f5.setName("BCM-Res:Recovery Time");

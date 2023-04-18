@@ -7,8 +7,6 @@ import lombok.Data;
 @Data
 public class result {
 	
-	private String install_status;
-	
 	private String sys_class_name;
 	
 	private String display_name;
@@ -22,10 +20,6 @@ public class result {
 	private String purchase_date;
 	
 	private String depreciation_date;
-	
-	//private String cost;
-	
-	//private int quantity;
 	
 	private String serial_number;
 	

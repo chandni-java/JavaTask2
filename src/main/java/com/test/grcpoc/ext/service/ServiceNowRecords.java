@@ -56,7 +56,7 @@ public class ServiceNowRecords implements IServiceNowRecords {
 		fieldAl.add(f1);
 		fieldAl.add(f2);
 		fieldAl.add(f3);
-		fieldAl.add(f6);
+		fieldAl.add(f6);//.
 		fieldAl.add(f7);
 		
 		fields fields = new fields();

@@ -1,9 +1,7 @@
 package com.test.grcpoc.ext.entity;
 
 import lombok.Data;
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Data
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class field 
 		{
 		   private String name;

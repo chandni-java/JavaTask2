@@ -9,8 +9,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,8 +19,7 @@ import com.test.grcpoc.ext.entity.PostEntity;
 import com.test.grcpoc.ext.entity.ServiceNowResource;
 import com.test.grcpoc.ext.service.IServiceNowRecords;
 
-@RestController
-
+@Controller
 public class GRCPOCController {
 
 	@Autowired
@@ -28,6 +28,12 @@ public class GRCPOCController {
 	@Autowired
 	private IServiceNowRecords iServiceNowRecords;
 
+	@GetMapping("/testjsp")
+	public String getJsp()
+	{
+		return "welcome";
+	}
+	
 	@RequestMapping("/getrecords")
 	public ResponseEntity<ServiceNowResource> getRecords() throws URISyntaxException, JsonProcessingException {
         

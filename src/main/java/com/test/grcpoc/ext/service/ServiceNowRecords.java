@@ -16,6 +16,7 @@ public class ServiceNowRecords implements IServiceNowRecords {
 	public PostEntity extractData(ResponseEntity<ServiceNowResource> response, int i, int ii)
 	{
 		return mapper(response,i,ii);
+		//.
 	}
 	
 	public static PostEntity mapper(ResponseEntity<ServiceNowResource> response, int i, int ii)

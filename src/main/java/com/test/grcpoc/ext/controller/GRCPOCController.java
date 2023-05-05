@@ -46,15 +46,15 @@ public class GRCPOCController {
 //        response.getBody().getResult().size();
 		return "welcome";
 	}
-	
-	@RequestMapping("/getrecords")
+	//@RequestParam("records") Integer number
+	@RequestMapping("/getassetsdata")//give logical name
 	public ResponseEntity<ServiceNowResource> getRecords(@RequestParam("records") Integer number) throws URISyntaxException, JsonProcessingException {
         
 		HttpHeaders headers = new HttpHeaders();
 		
-		headers.setBasicAuth("joel.nardo", "Jithu@1254");
+		headers.setBasicAuth("admin", "VZb5joG5Rn-!");
 		
-		URI uri = new URI("https://dev141866.service-now.com/api/now/table/alm_asset?sysparm_limit="+number);
+		URI uri = new URI("https://dev158414.service-now.com/api/now/table/alm_asset?sysparm_limit="+number);
         
 		HttpEntity<String> request = new HttpEntity<String>(headers);
         

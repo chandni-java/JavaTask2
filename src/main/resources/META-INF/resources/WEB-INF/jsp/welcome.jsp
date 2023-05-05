@@ -61,7 +61,7 @@
 <title>Snow Integration</title>
 </head>
 <body>
-    <form  action="/getrecords" method ="post">
+    <form  action="/getassetsdata" method ="post">
       <h1>Welcome to Snow Integration utility</h1>
       <div class="formcontainer">
       <hr/>

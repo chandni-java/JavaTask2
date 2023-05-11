@@ -1,9 +1,7 @@
 package com.test.grcpoc.ext.entity;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
 import lombok.Data;
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Data
 public class result {
 	

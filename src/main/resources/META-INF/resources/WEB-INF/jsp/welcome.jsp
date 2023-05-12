@@ -1,77 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
- <style>
-      html, body {
-      display: flex;
-      justify-content: center;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 15px;
-      }
-      form {
-      border: 5px solid #f1f1f1;
-      }
-      input[type=text], input[type=password] {
-      width: 100%;
-      padding: 16px 8px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      }
-      button {
-      background-color: #8ebf42;
-      color: white;
-      padding: 14px 0;
-      margin: 10px 0;
-      border: none;
-      cursor: grabbing;
-      width: 100%;
-      }
-      h1 {
-      text-align:center;
-      fone-size:18;
-      }
-      button:hover {
-      opacity: 0.8;
-      }
-      .formcontainer {
-      text-align: left;
-      margin: 24px 50px 12px;
-      }
-      .container {
-      padding: 16px 0;
-      text-align:left;
-      }
-      span.psw {
-      float: right;
-      padding-top: 0;
-      padding-right: 15px;
-      }
-      /* Change styles for span on extra small screens */
-      @media screen and (max-width: 300px) {
-      span.psw {
-      display: block;
-      float: none;
-      }
-    </style>
+<style>
+html, body {
+	display: flex;
+	justify-content: center;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 15px;
+}
+
+form {
+	border: 5px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 16px 8px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+button {
+	background-color: #8ebf42;
+	color: white;
+	padding: 14px 0;
+	margin: 10px 0;
+	border: none;
+	cursor: grabbing;
+	width: 100%;
+}
+
+h1 {
+	text-align: center;
+	fone-size: 18;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+.formcontainer {
+	text-align: left;
+	margin: 24px 50px 12px;
+}
+
+.container {
+	padding: 16px 0;
+	text-align: left;
+}
+
+span.psw {
+	float: right;
+	padding-top: 0;
+	padding-right: 15px;
+}
+/* Change styles for span on extra small screens */
+@media screen and (max-width: 300px) {
+	span.psw {
+		display: block;
+		float: none;
+	}
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Snow Integration</title>
 </head>
 <body>
-    <form  action="/getrecords" method ="post">
-      <h1>Welcome to Snow Integration utility</h1>
-      <div class="formcontainer">
-      <hr/>
-      <div class="container">
-        <label><strong>How many records do you want to migrate?</strong></label>
-        <br><br>
-        <input style= "width:100%" type="number" placeholder="Number of Records" name="records" required>
-      </div>
-      <button type="submit">Submit</button>
-      </div>
-    </form>
-  </body>
+	<form action="/getrecords" method="post">
+		<h1>Welcome to Snow Integration utility</h1>
+		<div class="formcontainer">
+			<hr />
+			<div class="container">
+				<label><strong>How many records do you want to
+						migrate?</strong></label> <br>
+				<br> <input style="width: 100%" type="number"
+					placeholder="Number of Records" name="records" required>
+			</div>
+			<button type="submit">Submit</button>
+		</div>
+	</form>
+	<c:set var="message" value="Hello World!" />
+	<p>${message}</p>
+</body>
 </html>

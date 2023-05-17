@@ -1,7 +1,10 @@
 package com.test.grcpoc.ext.entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import lombok.Data;
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @Data
 public class result {
 	
@@ -22,7 +25,7 @@ public class result {
 	private String serial_number;
 	
 	private String sys_mod_count;
-
+	
 	public String getDisplay_name() {
 		return display_name;
 	}
@@ -31,7 +34,6 @@ public class result {
 		this.display_name = display_name;
 	}
 
-
 	public String getSys_class_name() {
 		return sys_class_name;
 	}
@@ -39,8 +41,6 @@ public class result {
 	public void setSys_class_name(String sys_class_name) {
 		this.sys_class_name = sys_class_name;
 	}
-	
-	
 
 	public String getInvoice_number() {
 		return invoice_number;
@@ -82,24 +82,6 @@ public class result {
 		this.depreciation_date = depreciation_date;
 	}
 
-
-//	public String getCost() {
-//		return cost;
-//	}
-//
-//	public void setCost(String cost) {
-//		this.cost = cost;
-//	}
-//
-//
-//	public String getQuantity() {
-//		return quantity;
-//	}
-//
-//	public void setQuantity(String quantity) {
-//		this.quantity = quantity;
-//	}
-
 	public String getSys_mod_count() {
 		return sys_mod_count;
 	}
@@ -116,4 +98,11 @@ public class result {
 		this.serial_number = serial_number;
 	}
 
+	@Override
+	public String toString() {
+		return sys_class_name + "," + display_name + ","
+				+ invoice_number + "," + delivery_date + "," + retirement_date
+				+ "," + purchase_date + "," + depreciation_date + ","
+				+ serial_number + "," + sys_mod_count;
+	}
 }

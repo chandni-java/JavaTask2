@@ -3,12 +3,10 @@ package com.test.grcpoc.ext.entity;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import lombok.Data;
-//@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-@Data
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ServiceNowResource 
 {
+
 		private ArrayList <result> result;
 
 		public ArrayList<result> getResult() 
@@ -20,7 +18,9 @@ public class ServiceNowResource
 		{
 			this.result = result;
 		}
-		 
-		
-		
+
+		@Override
+		public String toString() {
+			return "ServiceNowResource [result=" + result + "]";
+		}
 }

@@ -79,7 +79,7 @@ tr:hover {
 	z-index: 9999;
 }
 </style>
-<script type="text/javascript">
+ <script type="text/javascript">
 	function checkUncheck(main) {
 		all = document.getElementsByName('selectedItems');
 		for (var a = 0; a < all.length; a++) {
@@ -89,15 +89,14 @@ tr:hover {
 </script>
 </head>
 <body>
-	<form action ="/savedata" method="post" modelAttribute="ServiceNowResource">
-		<div class="container">
+	<form action ="/savedata" method="post">
+		<div class="form-group">
 			<h1 align="center">Snow Results</h1>
 			<table>
 				<thead>
 					<tr>
-						<th>Select All<input type=checkbox
-							onclick='checkUncheck(this)'></th>
-						<!-- <th>Sr No.</th> -->
+						<th>Select All<input type=checkbox onclick='checkUncheck(this)'></th>
+						<th>Sr No.</th> 
 						<th>Sys Class Name</th>
 						<th>Display Name</th>
 						<th>Invoice Number</th>
@@ -112,12 +111,8 @@ tr:hover {
 				<tbody>
 					<c:forEach var="r" items="${result}" varStatus="status">
 						<tr>
-							<td>
-							  <input type="checkbox" name="selectedItems"
-								value="${r}">  
-								<!-- ${r.sys_class_name} -->
-								</td>
-							<%-- <td>${status.index + 1}</td> --%>
+							<td><input type="checkbox" name="selectedItems" value="${r}"></td>
+							<td>${status.index + 1}</td> 
 							<td>${r.sys_class_name}</td>
 							<td>${r.display_name}</td>
 							<td>${r.invoice_number}</td>
@@ -133,7 +128,7 @@ tr:hover {
 			</table>
 			<br>
 			<div class="button-container">
-				<button class="beige-btn" type="submit" name="saveit">Submit</button>
+				<button class="beige-btn" type="submit" value = "submit" name="saveit">Submit</button>
 			</div>
 		</div>
 	</form>

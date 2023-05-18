@@ -46,6 +46,7 @@ public class ServiceNowRecords01 implements IServiceNowRecords01 {
 				field f6 = new field();
 				f6.setName("IntegrationWKC:Project ID");
 				f6.setValue(names[7]);
+				f6.setDataType("STRING_TYPE");
 				
 				field f7 = new field();
 				f7.setName("ServiceNow Field Group:Snow Test Field");
@@ -65,7 +66,7 @@ public class ServiceNowRecords01 implements IServiceNowRecords01 {
 		
 		PostEntity postE = new PostEntity();
 		postE.setName("SnowR " + ii +" "+names[1]);
-		postE.setPrimaryParentId("9601");
+		postE.setPrimaryParentId("8464");
 		postE.setTypeDefinitionId("Resource");
 		postE.setFields(fields);
 		

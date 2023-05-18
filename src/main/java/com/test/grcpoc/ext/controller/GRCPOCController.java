@@ -73,6 +73,7 @@ public class GRCPOCController {
 	@RequestMapping("/savedata")
 	public String saveData(@RequestParam ("selectedItems") List<String> name) throws URISyntaxException, JsonProcessingException
 	{
+		System.out.println("this is name : " + name);
 		System.out.println("this is size : " + name.size());
 		
 		int ii = 0;
@@ -82,6 +83,8 @@ public class GRCPOCController {
 			String s = name.get(i);
 				
 			PostEntity PE =	iServiceNowRecords01.extractData01(name.get(i),ii);
+			
+			System.out.println("this is pe : " + PE.toString());
 			
 			
 			HttpHeaders headers0 = new HttpHeaders();

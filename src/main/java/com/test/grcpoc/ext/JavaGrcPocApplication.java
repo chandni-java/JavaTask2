@@ -17,22 +17,4 @@ public class JavaGrcPocApplication {
 		 return new RestTemplate(); 
 	 }
 	 
-//	 @Bean
-//	 public RestTemplate restTemplate(RestTemplateBuilder builder) {
-//	     return builder.build();
-//	 }
-	
-//	@Bean
-//	public RestTemplate restTemplate() {
-//	   final RestTemplate restTemplate = new RestTemplate();
-//
-//	   List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
-//	   MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-//	   converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
-//	   messageConverters.add(converter);
-//	   restTemplate.setMessageConverters(messageConverters);
-//
-//	   return restTemplate;
-//	}
-	
 }

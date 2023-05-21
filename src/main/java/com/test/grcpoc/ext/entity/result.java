@@ -10,29 +10,31 @@ public class result {
 	
 	private String sys_class_name;
 	
-	private String display_name;
+	//private String display_name;
 	
-	private String invoice_number;
+	private String sys_id;
+	
+	//private String invoice_number;
 	
 	private String delivery_date;
 	
-	private String retirement_date;
+	//private String retirement_date;
 	
 	private String purchase_date;
 	
 	private String depreciation_date;
 	
-	private String serial_number;
+//	private String serial_number;
 	
 	private String sys_mod_count;
 	
-	public String getDisplay_name() {
-		return display_name;
-	}
-
-	public void setDisplay_name(String display_name) {
-		this.display_name = display_name;
-	}
+//	public String getDisplay_name() {
+//		return display_name;
+//	}
+//
+//	public void setDisplay_name(String display_name) {
+//		this.display_name = display_name;
+//	}
 
 	public String getSys_class_name() {
 		return sys_class_name;
@@ -42,29 +44,39 @@ public class result {
 		this.sys_class_name = sys_class_name;
 	}
 
-	public String getInvoice_number() {
-		return invoice_number;
-	}
-
-	public void setInvoice_number(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public String getInvoice_number() {
+//		return invoice_number;
+//	}
+//
+//	public void setInvoice_number(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
+	
+	
 
 	public String getDelivery_date() {
 		return delivery_date;
+	}
+
+	public String getSys_id() {
+		return sys_id;
+	}
+
+	public void setSys_id(String sys_id) {
+		this.sys_id = sys_id;
 	}
 
 	public void setDelivery_date(String delivery_date) {
 		this.delivery_date = delivery_date;
 	}
 
-	public String getRetirement_date() {
-		return retirement_date;
-	}
-
-	public void setRetirement_date(String retirement_date) {
-		this.retirement_date = retirement_date;
-	}
+//	public String getRetirement_date() {
+//		return retirement_date;
+//	}
+//
+//	public void setRetirement_date(String retirement_date) {
+//		this.retirement_date = retirement_date;
+//	}
 
 	public String getPurchase_date() {
 		return purchase_date;
@@ -90,19 +102,18 @@ public class result {
 		this.sys_mod_count = sys_mod_count;
 	}
 
-	public String getSerial_number() {
-		return serial_number;
-	}
-
-	public void setSerial_number(String serial_number) {
-		this.serial_number = serial_number;
-	}
+//	public String getSerial_number() {
+//		return serial_number;
+//	}
+//
+//	public void setSerial_number(String serial_number) {
+//		this.serial_number = serial_number;
+//	}
 
 	@Override
 	public String toString() {
-		return sys_class_name + "," + display_name + ","
-				+ invoice_number + "," + delivery_date + "," + retirement_date
-				+ "," + purchase_date + "," + depreciation_date + ","
-				+ serial_number + "," + sys_mod_count;
+		return sys_class_name + "," + sys_id + ","
+				 + delivery_date + "," + purchase_date + "," + depreciation_date + ","
+				 + sys_mod_count;
 	}
 }

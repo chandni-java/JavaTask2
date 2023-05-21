@@ -4,84 +4,79 @@
 <html>
 <head>
 <style>
-html, body {
-	display: flex;
-	justify-content: center;
-	font-family: Roboto, Arial, sans-serif;
-	font-size: 15px;
-}
-
-form {
-	border: 5px solid #f1f1f1;
-}
-
-input[type=text], input[type=password] {
-	width: 100%;
-	padding: 16px 8px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-sizing: border-box;
-}
-
-button {
-	background-color: #8ebf42;
-	color: white;
-	padding: 14px 0;
-	margin: 10px 0;
-	border: none;
-	cursor: grabbing;
-	width: 100%;
-}
-
-h1 {
-	text-align: center;
-	fone-size: 18;
-}
-
-button:hover {
-	opacity: 0.8;
-}
-
-.formcontainer {
-	text-align: left;
-	margin: 24px 50px 12px;
-}
-
-.container {
-	padding: 16px 0;
-	text-align: left;
-}
-
-span.psw {
-	float: right;
-	padding-top: 0;
-	padding-right: 15px;
-}
-/* Change styles for span on extra small screens */
-@media screen and (max-width: 300px) {
-	span.psw {
-		display: block;
-		float: none;
-	}
-}
-</style>
+        html, body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            height: 100vh;
+            background-color: #f0f7f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        button {
+            background-color: #23a388;
+            color: #ffffff;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #1a7c6d;
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #23a388;
+            margin-bottom: 24px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 16px 0;
+        }
+    </style>
 <meta charset="ISO-8859-1">
 <title>Snow Integration</title>
 </head>
 <body>
-	<form action="/result" method="post">
-		<h1>Welcome to Snow Integration utility</h1>
-		<div class="formcontainer">
-			<hr />
-			<div class="container">
-				<label><strong>How many records do you want to
-						migrate?</strong></label> <br>
-				<br> <input style="width: 100%" type="number"
-					placeholder="Number of Records" name="records" required>
-			</div>
-			<button type="submit">Submit</button>
-		</div>
-	</form>
+    <form action="/result" method="post">
+        <h1>Welcome to Snow Integration Utility</h1>
+        <div>
+            <hr>
+            <label><strong>How many records do you want to migrate?</strong></label>
+            <br><br>
+            <input type="number" placeholder="Number of Records" name="records" required>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

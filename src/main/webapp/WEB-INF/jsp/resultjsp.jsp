@@ -98,13 +98,13 @@ tr:hover {
 						<th>Select All<input type=checkbox onclick='checkUncheck(this)'></th>
 						<th>Sr No.</th> 
 						<th>Sys Class Name</th>
-						<th>Display Name</th>
-						<th>Invoice Number</th>
+						<th>Sys_id</th>
+						<!-- <th>Invoice Number</th> -->
 						<th>Delivery Date</th>
-						<th>Retirement Date</th>
+						<!-- <th>Retirement Date</th> -->
 						<th>Purchase Date</th>
 						<th>Depreciation Date</th>
-						<th>Serial Number</th>
+						<!-- <th>Serial Number</th> -->
 						<th>Sys Mod Count</th>
 					</tr>
 				</thead>
@@ -114,13 +114,13 @@ tr:hover {
 							<td><input type="checkbox" name="selectedItems" value="${r}"></td>
 							<td>${status.index + 1}</td> 
 							<td>${r.sys_class_name}</td>
-							<td>${r.display_name}</td>
-							<td>${r.invoice_number}</td>
+							<td>${r.sys_id}</td>
+							<%-- <td>${r.invoice_number}</td> --%>
 							<td>${r.delivery_date}</td>
-							<td>${r.retirement_date}</td>
+							<%-- <td>${r.retirement_date}</td> --%>
 							<td>${r.purchase_date}</td>
 							<td>${r.depreciation_date}</td>
-							<td>${r.serial_number}</td>
+							<%-- <td>${r.serial_number}</td> --%>
 							<td>${r.sys_mod_count}</td>
 						</tr>
 					</c:forEach>

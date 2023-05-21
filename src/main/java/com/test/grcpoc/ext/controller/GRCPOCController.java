@@ -109,6 +109,8 @@ public class GRCPOCController {
 	@RequestMapping("/savedata")
 	public String saveData(@RequestParam ("selectedItems") List<String> name,ModelMap model) throws URISyntaxException, JsonProcessingException
 	{
+		String Sys_id = "";
+		ArrayList<String> existingRecords = new ArrayList<>();
 		
 		for(int i = 0; i<name.size(); i++)
 		{
@@ -125,7 +127,7 @@ public class GRCPOCController {
 	            names[ii] = "";
 	        }
 //=====================================================================================================
-	        String Sys_id = names[1];
+	        Sys_id = names[1];
 	        HttpHeaders headers01 = new HttpHeaders();
 	        headers01.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
 	        
@@ -138,10 +140,10 @@ public class GRCPOCController {
 			        OpenPagesResource.class
 			    );
 	        
-	        if(response01.getBody().getRows()!=null)
+	        if(!response01.getBody().getRows().isEmpty())
 	        {
-	        	model.addAttribute("sysid", Sys_id);
-	        	return "sysid";
+	        	existingRecords.add(Sys_id);
+	        	continue;
 	        }
 //=======================================================================================================	        
 			PostEntity PE =	iServiceNowRecords01.extractData01(names);
@@ -159,7 +161,11 @@ public class GRCPOCController {
 			restTemplate.postForEntity(uri0, entity, String.class);
 		}
 		
-		System.out.println("hello");
+		if(!existingRecords.isEmpty())
+		{
+			model.addAttribute("sysid", existingRecords);
+        	return "sysid";
+		}
 		
 		return "done";
 	}

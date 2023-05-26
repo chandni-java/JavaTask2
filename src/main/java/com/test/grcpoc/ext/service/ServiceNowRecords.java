@@ -38,7 +38,7 @@ public class ServiceNowRecords implements IServiceNowRecords {
 		
 		field f3 = new field();
 		f3.setName("OPSS-Res:Technical Support 2");
-		f3.setValue(response.getBody().getResult().get(i).getDepreciation_date());
+		f3.setValue(response.getBody().getResult().get(i).getDisplay_name());
 		f3.setDataType("STRING_TYPE");
 		
 		field f7 = new field();

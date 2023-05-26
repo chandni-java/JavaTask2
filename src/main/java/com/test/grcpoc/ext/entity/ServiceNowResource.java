@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class ServiceNowResource 
 {
 
-		private ArrayList <result> result;
+		private ArrayList <result> result = new ArrayList<result>();
 
 		public ArrayList<result> getResult() 
 		{

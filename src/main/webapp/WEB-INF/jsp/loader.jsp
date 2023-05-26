@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${noOfRecords} Records have been saved!
+<img src="/images/waiting-loading.gif" alt="Loading...">
 </body>
 </html>

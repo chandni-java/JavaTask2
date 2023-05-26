@@ -1,12 +1,6 @@
 package com.test.grcpoc.ext.entity;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-import lombok.Data;
-
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-@Data
-public class result {
+public class AssetFormData {
 	
 	private String delivery_date;
 	private String sys_id;
@@ -14,6 +8,7 @@ public class result {
 	private String sys_class_name;
 	private String sys_mod_count;
 	private String purchase_date;
+	private boolean isSelected;
 	
 	
 	public String getDisplay_name() {
@@ -71,4 +66,14 @@ public class result {
 				 + delivery_date + "," + purchase_date + ","
 				 + display_name + "," + sys_mod_count+" ";
 	}
+
+	public boolean isSelected() {
+		return isSelected;
+	}
+
+	public void setSelected(boolean isSelected) {
+		this.isSelected = isSelected;
+	}
+
+
 }

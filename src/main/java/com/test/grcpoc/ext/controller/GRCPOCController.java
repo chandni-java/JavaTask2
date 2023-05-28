@@ -99,13 +99,13 @@ public class GRCPOCController {
 		for(int i = 0; i<snr.getResult().size(); i++)
 		{
 			 //To check if record with same name is present in IBM OpenPages Environment.
-			
-			String sys_Id = snr.getResult().get(i).getSys_id();
+			    String sys_Id = snr.getResult().get(i).getSys_id();
 		        HttpHeaders headers01 = new HttpHeaders();
 		        headers01.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
 		        
 		        URI uri01 = new URI("http://op83.timusconsulting.com:10108/grc/api/query?q=select*from[Resource]where[Resource].[Name]IN('"+sys_Id+"')");
 			    HttpEntity<String> request01 = new HttpEntity<String>(headers01);
+			    
 		        ResponseEntity<OpenPagesResource> response01 = restTemplate.exchange(
 				        uri01,
 				        HttpMethod.GET,
@@ -146,7 +146,7 @@ public class GRCPOCController {
 		}
 		
 		model.addAttribute("noOfRecords", noOfRecordsSaved);
-		return "done";
+		return "existingrecords";
 	}
 	
 	@RequestMapping("/getassetsdata")

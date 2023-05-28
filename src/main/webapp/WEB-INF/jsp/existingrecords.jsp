@@ -87,35 +87,42 @@ tr:hover {
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="center-align">
-	<h1 style="align-content: center">These record(s) are already present in OP Environment</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Sys Class Name</th>
-					<th>Sys_id</th>
-					<th>Delivery Date</th>
-					<th>Purchase Date</th>
-					<th>Depreciation Date</th>
-					<th>Sys Mod Count</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="r" items="${sysid}">
+	<c:if test="${noOfRecords ne null}">
+		<h1 style="align: center">${noOfRecords}Recordshavebeen saved!</h1>
+	</c:if>
+	<c:else>
+		<div class="center-align">
+			<h1 style="align-content: center">These record(s) are already
+				present in OP Environment</h1>
+			<table>
+				<thead>
 					<tr>
-						<td>${r.sys_class_name}</td>
+						<th>Sys Class Name</th>
+						<th>Sys_id</th>
+						<th>Delivery Date</th>
+						<th>Purchase Date</th>
+						<th>Depreciation Date</th>
+						<th>Sys Mod Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="r" items="${sysid}">
+						<tr>
+							<td>${r.sys_class_name}</td>
 							<td>${r.sys_id}</td>
 							<td>${r.delivery_date}</td>
 							<td>${r.purchase_date}</td>
 							<td>${r.display_name}</td>
 							<td>${r.sys_mod_count}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</c:else>
 	<br>
-	<p style="text-align: center">${noofrecordssaved} record(s) saved successfully.</p>
+	<p style="text-align: center">${noofrecordssaved}record(s)saved
+		successfully.</p>
 	<!-- <div class="button-container">
 		<button class="beige-btn" type="submit" value="submit" name="saveit">OK</button>
 	</div> -->

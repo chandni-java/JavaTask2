@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${noOfRecords} Records have been saved!
+${noOfRecords} Record(s) have been saved!
 </body>
 </html>

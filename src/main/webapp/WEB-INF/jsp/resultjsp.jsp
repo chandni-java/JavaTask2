@@ -91,7 +91,7 @@ tr:hover {
 </style>
 <script type="text/javascript">
 	 function checkUncheck(main) {
-		all = document.getElementsByName('selectedItems');
+		all = document.getElementsByName('selectedRecords');
 		for (var a = 0; a < all.length; a++) {
 			all[a].checked = main.checked;
 		}
@@ -144,8 +144,8 @@ tr:hover {
 					<c:forEach var="r" items="${snr.result}" varStatus="status">
 						<tr>
 						 <%-- <td><input type="checkbox" name="r" value="${r}"/></td>  --%>
-						<td>${status.index + 1}</td>
-			<td><input type = "checkbox" style="border:0px" name="r" value="${r}"/></td> 
+			<td>${status.index + 1}</td>
+			<td><input type = "checkbox" style="border:0px" name="selectedRecords" value="${r.sys_id}"/></td> 
 			<td><input style="border:0px" name="result[${status.index}].sys_class_name" value="${r.sys_class_name}"/></td>
 			<td><input style="border:0px" name="result[${status.index}].sys_id" value="${r.sys_id}" readonly/></td>
 			<td><input style="border:0px" name="result[${status.index}].delivery_date" value="${r.delivery_date}" readonly/></td>
@@ -170,14 +170,14 @@ tr:hover {
 						<td><form:label path = "result[${status.index}].display_name" value = "${r.display_name}" /></td>
 						<td><form:input path = "result[${status.index}].sys_mod_count" value = "${r.sys_mod_count}" /></td> --%>
 							
- 							<%-- <td><input type="checkbox" name="selectedItems" value="${r}"/></td> --%> 
- 							<%-- <td>${status.index + 1}</td>
+ 							<%-- <td><input type="checkbox" name="selectedRecords" value="${r.sys_id}"/></td>  
+ 							<td>${status.index + 1}</td>
  							<td>${r.sys_class_name}</td>
 							<td>${r.sys_id}</td>
 							<td>${r.delivery_date}</td>
 							<td>${r.purchase_date}</td>
 							<td>${r.display_name}</td>
-							<td>${r.sys_mod_count}</td>  --%>
+							<td>${r.sys_mod_count}</td>  --%> 
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -87,10 +87,6 @@ tr:hover {
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${noOfRecords ne null}">
-		<h1 style="align: center">${noOfRecords}Recordshavebeen saved!</h1>
-	</c:if>
-	<c:else>
 		<div class="center-align">
 			<h1 style="align-content: center">These record(s) are already
 				present in OP Environment</h1>
@@ -119,9 +115,8 @@ tr:hover {
 				</tbody>
 			</table>
 		</div>
-	</c:else>
 	<br>
-	<p style="text-align: center">${noofrecordssaved}record(s)saved
+	<p style="text-align: center">${noofrecordssaved} record(s)saved
 		successfully.</p>
 	<!-- <div class="button-container">
 		<button class="beige-btn" type="submit" value="submit" name="saveit">OK</button>

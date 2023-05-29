@@ -83,61 +83,131 @@ public class GRCPOCController {
 		snr.setResult(result);
 		
 		model.addAttribute("snr",snr);
+		//model.addAttribute("result",result);
 		return "resultjsp";
 	}
+	
+//	@RequestMapping("/savedata")
+////	public String saveData(@RequestParam ("selectedItems") List<String> name,ModelMap model) throws URISyntaxException, JsonProcessingException
+//	//public String saveData(@RequestParam ("selectedItems") String[] name,ModelMap model) throws URISyntaxException, JsonProcessingException
+//	public String saveData(@ModelAttribute ServiceNowResource snr,ModelMap model, @RequestParam("selectedRecords") String[] sysid) throws URISyntaxException, JsonProcessingException
+//	//public String saveData(@ModelAttribute result result, ModelMap model) throws URISyntaxException, JsonProcessingException
+//	{
+//		int noOfRecordsSaved = 0;
+//		List<result> existingRecords = new ArrayList<>();
+//	
+//		int ii = -1;
+//		for(int i = 0; i<sysid.length; i++)
+//		{
+//			 //To check if record with same name is present in IBM OpenPages Environment.
+//			    String sys_Id = snr.getResult().get(i).getSys_id();
+//		        HttpHeaders headers01 = new HttpHeaders();
+//		        headers01.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
+//		        
+//		        URI uri01 = new URI("http://op83.timusconsulting.com:10108/grc/api/query?q=select*from[Resource]where[Resource].[Name]IN('"+sys_Id+"')");
+//			    HttpEntity<String> request01 = new HttpEntity<String>(headers01);
+//			    
+//		        ResponseEntity<OpenPagesResource> response01 = restTemplate.exchange(
+//				        uri01,
+//				        HttpMethod.GET,
+//				        request01,
+//				        OpenPagesResource.class
+//				    );
+//		        
+//		        if(!response01.getBody().getRows().isEmpty())
+//		        {
+//		        	existingRecords.add(snr.getResult().get(i));
+//		        	continue;
+//		        }
+//			
+//			//Saving record in IBM Open Pages environment.
+//			ii++;
+//			PostEntity RecordsToBeSaved = iServiceNowRecords01.extractData01(snr,ii);
+//			
+//			HttpHeaders headers0 = new HttpHeaders();
+//			
+//			headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
+//			
+//			headers0.setContentType(MediaType.APPLICATION_JSON);
+//			
+//			URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
+//			
+//		    HttpEntity<PostEntity> entity = new HttpEntity<>(RecordsToBeSaved, headers0);
+//			
+//			restTemplate.postForEntity(uri0, entity, String.class);
+//			
+//			noOfRecordsSaved++;
+//		}
+//		
+//		if(!existingRecords.isEmpty())
+//		{
+//			model.addAttribute("noofrecordssaved", noOfRecordsSaved);
+//			model.addAttribute("sysid", existingRecords);
+//        	return "existingrecords";
+//		}
+//		
+//		model.addAttribute("noOfRecords", noOfRecordsSaved);
+//		return "existingrecords";
+//	}
 	
 	@RequestMapping("/savedata")
 //	public String saveData(@RequestParam ("selectedItems") List<String> name,ModelMap model) throws URISyntaxException, JsonProcessingException
 	//public String saveData(@RequestParam ("selectedItems") String[] name,ModelMap model) throws URISyntaxException, JsonProcessingException
-	public String saveData(@ModelAttribute ServiceNowResource snr,ModelMap model) throws URISyntaxException, JsonProcessingException
+	public String saveData(@ModelAttribute ServiceNowResource snr,ModelMap model, @RequestParam("selectedRecords") String[] sysid) throws URISyntaxException, JsonProcessingException
 	//public String saveData(@ModelAttribute result result, ModelMap model) throws URISyntaxException, JsonProcessingException
 	{
+		
+		ServiceNowResource snr0 = new ServiceNowResource();
 		int noOfRecordsSaved = 0;
 		List<result> existingRecords = new ArrayList<>();
 	
 		int ii = -1;
-		for(int i = 0; i<snr.getResult().size(); i++)
+		for(int i = 0; i<sysid.length; i++)
 		{
-			 //To check if record with same name is present in IBM OpenPages Environment.
-			    String sys_Id = snr.getResult().get(i).getSys_id();
-		        HttpHeaders headers01 = new HttpHeaders();
-		        headers01.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
-		        
-		        URI uri01 = new URI("http://op83.timusconsulting.com:10108/grc/api/query?q=select*from[Resource]where[Resource].[Name]IN('"+sys_Id+"')");
-			    HttpEntity<String> request01 = new HttpEntity<String>(headers01);
-			    
-		        ResponseEntity<OpenPagesResource> response01 = restTemplate.exchange(
-				        uri01,
-				        HttpMethod.GET,
-				        request01,
-				        OpenPagesResource.class
-				    );
-		        
-		        if(!response01.getBody().getRows().isEmpty())
-		        {
-		        	existingRecords.add(snr.getResult().get(i));
-		        	continue;
-		        }
-			
-			//Saving record in IBM Open Pages environment.
-			ii++;
-			PostEntity RecordsToBeSaved = iServiceNowRecords01.extractData01(snr,ii);
-			
-			HttpHeaders headers0 = new HttpHeaders();
-			
-			headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
-			
-			headers0.setContentType(MediaType.APPLICATION_JSON);
-			
-			URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
-			
-		    HttpEntity<PostEntity> entity = new HttpEntity<>(RecordsToBeSaved, headers0);
-			
-			restTemplate.postForEntity(uri0, entity, String.class);
-			
-			noOfRecordsSaved++;
+			for(int j = 0; j<snr.getResult().size(); j++)
+			{
+				if(sysid[i].equals(snr.getResult().get(j).getSys_id()))
+				{
+					    String sys_Id = sysid[i];
+				        HttpHeaders headers01 = new HttpHeaders();
+				        headers01.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
+				        
+				        URI uri01 = new URI("http://op83.timusconsulting.com:10108/grc/api/query?q=select*from[Resource]where[Resource].[Name]IN('"+sys_Id+"')");
+					    HttpEntity<String> request01 = new HttpEntity<String>(headers01);
+					    
+				        ResponseEntity<OpenPagesResource> response01 = restTemplate.exchange(
+						        uri01,
+						        HttpMethod.GET,
+						        request01,
+						        OpenPagesResource.class
+						    );
+				        
+				      //To check if record with same name is present in IBM OpenPages Environment.
+				        if(!response01.getBody().getRows().isEmpty())
+				        {
+				        	existingRecords.add(snr.getResult().get(i));
+				        	continue;
+				        }
+				      //Saving record in IBM Open Pages environment.
+						ii++;
+						PostEntity RecordsToBeSaved = iServiceNowRecords01.extractData01(snr.getResult().get(j),ii);
+						
+						HttpHeaders headers0 = new HttpHeaders();
+						
+						headers0.setBasicAuth("sameer.diwse@timusconsulting.com", "Timus@2023");
+						
+						headers0.setContentType(MediaType.APPLICATION_JSON);
+						
+						URI uri0 = new URI("http://op83.timusconsulting.com:10108/grc/api/contents");
+						
+					    HttpEntity<PostEntity> entity = new HttpEntity<>(RecordsToBeSaved, headers0);
+						
+						restTemplate.postForEntity(uri0, entity, String.class);
+						
+						noOfRecordsSaved++;
+				}
+			}
 		}
-		
 		if(!existingRecords.isEmpty())
 		{
 			model.addAttribute("noofrecordssaved", noOfRecordsSaved);
@@ -146,8 +216,9 @@ public class GRCPOCController {
 		}
 		
 		model.addAttribute("noOfRecords", noOfRecordsSaved);
-		return "existingrecords";
+		return "done";
 	}
+	
 	
 	@RequestMapping("/getassetsdata")
 	public ResponseEntity<ServiceNowResource> getRecords(@RequestParam("records") Integer number) throws URISyntaxException, JsonProcessingException {

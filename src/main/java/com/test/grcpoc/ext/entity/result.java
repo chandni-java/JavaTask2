@@ -14,8 +14,16 @@ public class result {
 	private String sys_class_name;
 	private String sys_mod_count;
 	private String purchase_date;
+	private Boolean isSelected;
 	
-	
+	public Boolean getIsSelected() {
+		return isSelected;
+	}
+
+	public void setIsSelected(Boolean isSelected) {
+		this.isSelected = isSelected;
+	}
+
 	public String getDisplay_name() {
 		return display_name;
 	}

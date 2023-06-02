@@ -7,7 +7,6 @@ import lombok.Data;
 //@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class fields {
 	
-	
 	 private ArrayList<field> field = new ArrayList<>();
 	 
 	

@@ -9,97 +9,42 @@ import com.test.grcpoc.ext.entity.PostEntity;
 import com.test.grcpoc.ext.entity.ServiceNowResource;
 import com.test.grcpoc.ext.entity.field;
 import com.test.grcpoc.ext.entity.fields;
-import com.test.grcpoc.ext.entity.result;
 
 @Service
 public class ServiceNowRecords01 implements IServiceNowRecords01 {
 	@Override
-	public PostEntity extractData01(result r, int i) throws URISyntaxException {
+	public PostEntity extractData01(ServiceNowResource snr, int i) throws URISyntaxException {
 
-//				field f = new field();
-//				f.setName("ServiceNow Field Group:Snow Description");
-//				f.setValue(snr.getResult().get(i).getDelivery_date());
-//				f.setDataType("STRING_TYPE");
-//				
-//				field f1 = new field();
-//				f1.setName("ServiceNow Field Group:Snow Additional Description");
-//				f1.setValue(snr.getResult().get(i).getPurchase_date());
-//				f1.setDataType("STRING_TYPE");
-//				
-//				field f2 = new field();
-//				f2.setName("OPSS-Res:Technical Support 1");
-//				f2.setValue(snr.getResult().get(i).getSys_mod_count());
-//				f2.setDataType("STRING_TYPE");
-//				
-//				field f3 = new field();
-//				f3.setName("OPSS-Res:Technical Support 2");
-//				f3.setValue(snr.getResult().get(i).getSys_class_name());
-//				f3.setDataType("STRING_TYPE");
-//				
-//				field f4 = new field();
-//				f4.setName("IntegrationWKC:Project ID");
-//				f4.setValue(snr.getResult().get(i).getDisplay_name());
-//				f4.setDataType("STRING_TYPE");
-//				
-//				field f5 = new field();
-//				f5.setName("ServiceNow Field Group:Snow Test Field");
-//				f5.setValue(snr.getResult().get(i).getSys_class_name());
-//				f5.setDataType("STRING_TYPE");
-//		
-//		ArrayList<field> fieldAl = new ArrayList<>();
-//		fieldAl.add(f);
-//		fieldAl.add(f1);
-//		fieldAl.add(f2);
-//		fieldAl.add(f3);
-//		fieldAl.add(f4);
-//		fieldAl.add(f5);
-//		
-//		fields fields = new fields();
-//		fields.setField(fieldAl);
-//		
-//		PostEntity postE = new PostEntity();
-//		postE.setName(snr.getResult().get(i).getSys_id());
-//		postE.setPrimaryParentId("8464");
-//		postE.setTypeDefinitionId("Resource");
-//		postE.setFields(fields);
-//		
-//	    return postE;
-//	}
-//	
-//	public String mapper(String serviceNowField, String openPagesField, String dataType)
-//	{
-//		return "";
-
-		field f = new field();
-		f.setName("ServiceNow Field Group:Snow Description");
-		f.setValue(r.getDelivery_date());
-		f.setDataType("STRING_TYPE");
-
-		field f1 = new field();
-		f1.setName("ServiceNow Field Group:Snow Additional Description");
-		f1.setValue(r.getPurchase_date());
-		f1.setDataType("STRING_TYPE");
-
-		field f2 = new field();
-		f2.setName("OPSS-Res:Technical Support 1");
-		f2.setValue(r.getSys_mod_count());
-		f2.setDataType("STRING_TYPE");
-
-		field f3 = new field();
-		f3.setName("OPSS-Res:Technical Support 2");
-		f3.setValue(r.getSys_class_name());
-		f3.setDataType("STRING_TYPE");
-
-		field f4 = new field();
-		f4.setName("IntegrationWKC:Project ID");
-		f4.setValue(r.getDisplay_name());
-		f4.setDataType("STRING_TYPE");
-
-		field f5 = new field();
-		f5.setName("ServiceNow Field Group:Snow Test Field");
-		f5.setValue(r.getSys_class_name());
-		f5.setDataType("STRING_TYPE");
-
+				field f = new field();
+				f.setName("ServiceNow Field Group:Snow Description");
+				f.setValue(snr.getResult().get(i).getDelivery_date());
+				f.setDataType("STRING_TYPE");
+				
+				field f1 = new field();
+				f1.setName("ServiceNow Field Group:Snow Additional Description");
+				f1.setValue(snr.getResult().get(i).getPurchase_date());
+				f1.setDataType("STRING_TYPE");
+				
+				field f2 = new field();
+				f2.setName("OPSS-Res:Technical Support 1");
+				f2.setValue(snr.getResult().get(i).getSys_mod_count());
+				f2.setDataType("STRING_TYPE");
+				
+				field f3 = new field();
+				f3.setName("OPSS-Res:Technical Support 2");
+				f3.setValue(snr.getResult().get(i).getSys_class_name());
+				f3.setDataType("STRING_TYPE");
+				
+				field f4 = new field();
+				f4.setName("IntegrationWKC:Project ID");
+				f4.setValue(snr.getResult().get(i).getDisplay_name());
+				f4.setDataType("STRING_TYPE");
+				
+				field f5 = new field();
+				f5.setName("ServiceNow Field Group:Snow Test Field");
+				f5.setValue(snr.getResult().get(i).getSys_class_name());
+				f5.setDataType("STRING_TYPE");
+		
 		ArrayList<field> fieldAl = new ArrayList<>();
 		fieldAl.add(f);
 		fieldAl.add(f1);
@@ -107,20 +52,22 @@ public class ServiceNowRecords01 implements IServiceNowRecords01 {
 		fieldAl.add(f3);
 		fieldAl.add(f4);
 		fieldAl.add(f5);
-
+		
 		fields fields = new fields();
 		fields.setField(fieldAl);
-
+		
 		PostEntity postE = new PostEntity();
-		postE.setName(r.getSys_id());
+		postE.setName(snr.getResult().get(i).getSys_id());
 		postE.setPrimaryParentId("8464");
 		postE.setTypeDefinitionId("Resource");
 		postE.setFields(fields);
-
-		return postE;
+		
+	    return postE;
 	}
-
-	public String mapper(String serviceNowField, String openPagesField, String dataType) {
+	
+	public String mapper(String serviceNowField, String openPagesField, String dataType)
+	{
 		return "";
 	}
 }
+

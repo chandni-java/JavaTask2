@@ -2,11 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--  <%@page import="com.test.grcpoc.ext.controller.GRCPOCController"%>
-<%@page import="com.test.grcpoc.ext.entity.result"%>
-<%@ page import="java.util.ArrayList" %> --%>
- 
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +11,8 @@
 <title>Snow Results</title>
 <style>
 .hidden-input {
-    display: none;
-  }
+	display: none;
+}
 
 .button-container {
 	text-align: center;
@@ -32,10 +29,17 @@
 	border-radius: 4px;
 	transition: background-color 0.3s ease-in-out;
 	margin: auto;
+	text-decoration: none;
 }
 
 .beige-btn:hover {
 	background-color: #D2B48C; /* Lighter beige on hover */
+}
+
+.center-image {
+	display: flex;
+	justify-content: center;
+	text-align: center;
 }
 
 body {
@@ -59,6 +63,10 @@ body {
 table {
 	border-collapse: collapse;
 	width: 100%;
+}
+
+.my-input {
+	width: 235px; /* Adjust the width value as per your requirements */
 }
 
 th, td {
@@ -90,10 +98,15 @@ tr:hover {
 }
 </style>
 <script type="text/javascript">
-	 function checkUncheck(main) {
-		all = document.getElementsByName('selectedRecords');
-		for (var a = 0; a < all.length; a++) {
-			all[a].checked = main.checked;
+	function funcSelectAll() {
+		if (document.forms[0].selectAllCheck.checked == true) {
+			for (var a = 0; a < document.forms[0].checkboxid.length; a++) {
+				document.forms[0].checkboxid[a].checked = true;
+			}
+		} else {
+			for (var a = 0; a < document.forms[0].checkboxid.length; a++) {
+				document.forms[0].checkboxid[a].checked = false;
+			}
 		}
 	}
 
@@ -109,28 +122,50 @@ tr:hover {
 		}
 
 		if (!isChecked) {
-			alert("Please select at least one record.");
+			/* alert("Please select at least one record."); */
 			return false; // Prevent form submission
 		}
 
 		return true; // Allow form submission
-	} 
-	
-	function goBack() {
-	    history.back();
+	}
+
+	function showLoader() {
+		document.getElementById('loader').style.display = 'block';
+		window.addEventListener('unload', hideLoader);
+	}
+
+	function hideLoader() {
+		document.getElementById('loader').style.display = 'none';
+	}
+
+	function onSubmitForm(event) {
+		// Call the first JavaScript function
+		var returnValue = validateForm();
+		if (returnValue == false) {
+			alert("Please select at least one record.");
+			return false;
+		}
+
+		hideLoader();
+		// Call the second JavaScript function
+		showLoader();
+
+		return returnValue;
 	}
 </script>
 </head>
 <body>
-<!-- modelAttribute="result" -->
- <!-- modelAttribute="snr" -->
-	<form:form action="/savedata" method="post" onsubmit="return validateForm()">
+	<!-- modelAttribute="result" -->
+	<!-- modelAttribute="snr" -->
+	<form action="/savedata" method="post"
+		onsubmit="return onSubmitForm(event);">
 		<div class="form-group" id="snowrecords">
-			<h1 align="center">Snow Results</h1>
+			<h1 align="center">Servicenow Results</h1>
 			<table>
 				<thead>
 					<tr>
-						<th>Select All<input type=checkbox onclick='checkUncheck(this)'></th> 
+						<th>Select All<input type=checkbox name='selectAllCheck'
+							onClick='funcSelectAll()'></th>
 						<th>Sr No.</th>
 						<th>Sys Class Name</th>
 						<th>System Id</th>
@@ -143,51 +178,41 @@ tr:hover {
 				<tbody>
 					<c:forEach var="r" items="${snr.result}" varStatus="status">
 						<tr>
-						 <%-- <td><input type="checkbox" name="r" value="${r}"/></td>  --%>
-			<td>${status.index + 1}</td>
-			<td><input type = "checkbox" style="border:0px" name="selectedRecords" value="${r.sys_id}"/></td> 
-			<td><input style="border:0px" name="result[${status.index}].sys_class_name" value="${r.sys_class_name}"/></td>
-			<td><input style="border:0px" name="result[${status.index}].sys_id" value="${r.sys_id}" readonly/></td>
-			<td><input style="border:0px" name="result[${status.index}].delivery_date" value="${r.delivery_date}" readonly/></td>
-			<td><input style="border:0px" name="result[${status.index}].purchase_date" value="${r.purchase_date}"/></td>
-			<td><input style="border:0px" name="result[${status.index}].display_name" value="${r.display_name}"/></td>
-			<td><input style="border:0px" name="result[${status.index}].sys_mod_count" value="${r.sys_mod_count}"/></td>
-						
-       						<%-- <td><form:label path = "result[${status.index}].isSelected" value = "1" /></td>
+							<td><input type="checkbox" style="border: 0px"
+								id="checkboxid" name="result[${status.index}].isSelected"
+								value="1" /></td>
 							<td>${status.index + 1}</td>
-						 <td><form:checkbox path = "isSelected" value = "1" /></td>
-						<td><form:label path = "r[${status.index + 1}].sys_class_name" value = "${r.sys_class_name}" /></td>
-						<td><form:label path = "r[${status.index + 1}].sys_id" value = "${r.sys_id}" /></td>
-						<td><form:label path = "r[${status.index + 1}].delivery_date" value = "${r.delivery_date}" /></td>
-						<td><form:label path = "r[${status.index + 1}].purchase_date" value = "${r.purchase_date}" /></td>
-						<td><form:label path = "r[${status.index + 1}].display_name" value = "${r.display_name}" /></td>
-						<td><form:input path = "r[${status.index + 1}].sys_mod_count" value = "${r.sys_mod_count}" /></td> --%>
-						
-						<%-- <td><form:label path = "result[${status.index}].sys_class_name" value = "${r.sys_class_name}" /></td>
-						<td><form:label path = "result[${status.index}].sys_id" value = "${r.sys_id}" /></td>
-						<td><form:label path = "result[${status.index}].delivery_date" value = "${r.delivery_date}" /></td>
-						<td><form:label path = "result[${status.index}].purchase_date" value = "${r.purchase_date}" /></td>
-						<td><form:label path = "result[${status.index}].display_name" value = "${r.display_name}" /></td>
-						<td><form:input path = "result[${status.index}].sys_mod_count" value = "${r.sys_mod_count}" /></td> --%>
-							
- 							<%-- <td><input type="checkbox" name="selectedRecords" value="${r.sys_id}"/></td>  
- 							<td>${status.index + 1}</td>
- 							<td>${r.sys_class_name}</td>
-							<td>${r.sys_id}</td>
-							<td>${r.delivery_date}</td>
-							<td>${r.purchase_date}</td>
-							<td>${r.display_name}</td>
-							<td>${r.sys_mod_count}</td>  --%> 
+							<td><input style="border: 0px"
+								name="result[${status.index}].sys_class_name"
+								value="${r.sys_class_name}" /></td>
+							<td><input class="my-input" style="border: 0px"
+								name="result[${status.index}].sys_id" value="${r.sys_id}"
+								 /></td>
+							<td><input style="border: 0px"
+								name="result[${status.index}].delivery_date"
+								value="${r.delivery_date}" readonly /></td>
+							<td><input style="border: 0px"
+								name="result[${status.index}].purchase_date"
+								value="${r.purchase_date}" /></td>
+							<td><input style="border: 0px"
+								name="result[${status.index}].display_name"
+								value="${r.display_name}" /></td>
+							<td><input style="border: 0px; width:50px"
+								name="result[${status.index}].sys_mod_count"
+								value="${r.sys_mod_count}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 			<br>
+			<div class="center-image" id="loader" style="display: none;">
+				<img src="/images/spinner.gif" alt="Loading...">
+			</div>
 			<div class="button-container">
 				<button class="beige-btn" type="submit" value="submit">Submit</button>
-				<button class="beige-btn" onclick="goBack()">Go Back</button>
+				<a href="/testjsp" class="beige-btn" style="margin-top: 20px;">Back</a>
 			</div>
 		</div>
-	</form:form>
+	</form>
 </body>
 </html>

@@ -109,7 +109,7 @@ to {
 		<div>
 			<hr>
 			<label><strong>How many records do you want to
-					migrate?</strong></label> <br> <br> <input type="number"
+					migrate?</strong></label> <br> <br> <input min="1" type="number"
 				placeholder="Number of Records" name="records" required>
 		</div>
 		<br>
